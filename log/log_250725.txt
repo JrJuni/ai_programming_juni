@@ -1,0 +1,8 @@
+# Goals
+- 바이브 코딩을 활용한 사무 환경에서 사용 가능한 로컬 AI 툴 개발
+
+# Today's log
+- Kickoff & Plan what to do
+
+# Details
+- Local MCP server + llm.cpp + Notion 회사 정보를 활용하여 회사 온보딩용 챗봇을 만들자
