@@ -1,0 +1,8 @@
+# Goals
+- 바이브 코딩을 활용한 사무 환경에서 사용 가능한 로컬 AI 툴 개발
+
+# Today's log
+- Venv setting
+> llama.cpp, torch, CUDA, ..., etc
+> pip freeze > requirements.txt
+
