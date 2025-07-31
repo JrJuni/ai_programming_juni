@@ -45,3 +45,6 @@ models/
 # Temporary
 *.tmp
 *.bak
+
+# Data
+.data/

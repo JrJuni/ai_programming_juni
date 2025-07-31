@@ -1,0 +1,11 @@
+# Goals
+- 바이브 코딩을 활용한 로컬 AI 툴 개발
+
+# Today's log
+- AI Kiosk 기능을 하는 AI 툴 개발
+- 한국어 해석 능력이 우수한 Midm-2.0 사용
+- 기능: menu schema 생성, 사용자 입력, llm.cpp를 이용한 추천 메뉴 추론
+- 기대효과: 사용자가 식당에서 자체적으로 분류한 category tab을 하나씩 찾아가며 원하는 메뉴를 찾는 것에서
+원하는 것을 직접 이야기함으로써 process를 1단계로 줄이고 식당별 차이 없이 UI 통일 가능 
+- 추가 개선안: Whisper 이용해서 STT 기능 추가
+- 기타: data, model .gitignore 처리
