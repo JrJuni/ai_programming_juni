@@ -1,1 +1,1 @@
-# llamacpp_projects
+# AX projects with AI coding
