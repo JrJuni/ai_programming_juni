@@ -1,0 +1,48 @@
+# ---- Python 기본 ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+.venv*/
+.python-version
+pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+
+# ---- IDE / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- 프로젝트 산출물 ----
+logs/
+**/log_*.txt
+exports/
+*.xlsx
+*.csv
+
+# ---- 데이터/모델/DB ----
+data/
+*.db
+models/
+*.gguf
+*.bin
+*.pt
+*.onnx
+
+# ---- 설정/시크릿 ----
+.env
+.env.*
+.streamlit/secrets.toml
+
+# ---- Streamlit 캐시 ----
+.streamlit/cache/
+.streamlit/state/

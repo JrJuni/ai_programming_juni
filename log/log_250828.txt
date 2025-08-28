@@ -1,0 +1,42 @@
+# Goals
+- 바이브 코딩을 활용한 음성 기반 회의록 작성 AI 툴 개발 (expo-assistant)
+
+# Today's log
+- expo-assistant 프로젝트 구조 설계 및 파일 생성
+  > 프로젝트 아키텍처 설계 (architecture.txt 작성)
+  > src/ 폴더 내 11개 Python 모듈 파일 생성
+    - app.py: Streamlit UI & 파이프라인 오케스트레이션
+    - asr.py: STT 래퍼(faster-whisper), 언어/신뢰도/세그먼트
+    - vad.py: VAD(webrtcvad 또는 silero-vad)
+    - summarizer.py: 오프라인(llama.cpp) & 온라인(OpenAI/Anthropic) 클라이언트
+    - revision.py: 음성 수정 지시 → JSON Patch 생성(규칙+소형 LLM)
+    - export_xlsx.py: OpenPyXL 템플릿/스타일/컬럼맵
+    - config.py: config.yaml 로드/검증, 모드 토글
+    - secrets_util.py: key 관리(secrets.toml, keyring, 세션 보관)
+    - logging_util.py: 일자별 로깅 설정/회전
+    - schema.py: Pydantic 모델 + JSON Schema + 검증/자동보정 (기존 파일 유지)
+    - db.py: SQLite DAO, 마이그레이션, 인덱스/쿼리 (기존 파일 유지)
+
+- 프로젝트 의존성 관리
+  > requirements.txt 완성
+    - 음성 처리: faster-whisper, webrtcvad, silero-vad, torch
+    - LLM: openai, anthropic, llama-cpp-python, transformers
+    - 데이터베이스: alembic
+    - JSON 처리: jsonpatch, jsonschema
+    - 로깅: python-json-logger, loguru
+    - 개발 도구: pytest, black, flake8, mypy
+
+- 디렉토리 구조 생성
+  > configs/, templates/, models/, logs/, tests/ 폴더 생성
+
+# Next Steps
+- 각 모듈별 상세 구현 시작
+- 음성 처리 파이프라인 구축 (VAD → STT → 요약)
+- 데이터베이스 스키마 설계 및 마이그레이션
+- Streamlit UI 프로토타입 개발
+
+# End of Day Update
+- architecture.txt 주석 보강
+- src 내 빈 모듈 파일들 생성 완료 및 설명 주석 추가
+- requirements.txt 보강 후 내장 모듈 표기는 주석 처리로 정리
+- 오늘 작업 로그 파일(log_250828.txt) 생성 및 내용 업데이트 완료

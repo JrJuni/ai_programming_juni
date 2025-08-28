@@ -22,6 +22,11 @@ PRIVATE_FIELDS = {"stt_conf", "transcript", "lang"}
 _PHONE_ALLOWED = re.compile(r"^[0-9+\-\s().]{5,30}$")
 _LANG_ALLOWED = re.compile(r"^[a-z]{2}(-[A-Z]{2})?$")  # 예: ko, en, en-US
 
+# Pydantic 버전 체커
+try:
+    from pydantic import field_validator  # v2
+except ImportError:  # v1 fallback
+    from pydantic import validator as field_validator  # 타입힌트 경고는 무시 가능
 
 # ---------------------------
 # 공통 유틸
@@ -125,6 +130,9 @@ class Contact(BaseModel):
             raise ValueError("phone은 숫자/공백/+-(). 만 허용합니다.")
         return v
 
+# 우선순위 범위 상수
+PRIORITY_MIN = 0
+PRIORITY_MAX = 3
 
 class Company(BaseModel):
     """회사 레코드 (DB: companies)"""
@@ -132,7 +140,13 @@ class Company(BaseModel):
     name: str
     status: Optional[str] = None
     description: Optional[str] = None
-    priority: Optional[int] = Field(default=None, ge=0, le=10)
+    # ▼ priority: 0~3으로 변경(기존 0~10 → 0~3)
+    priority: Optional[int] = Field(
+        default=None,
+        ge=PRIORITY_MIN,
+        le=PRIORITY_MAX,
+        description="회사 우선순위 (0~3)"
+    )
     industry: Optional[str] = None
     company_size: Optional[str] = None
     sales_volume_usd_m: Optional[float] = Field(default=None, ge=0)
@@ -148,6 +162,22 @@ class Company(BaseModel):
             s = v.strip()
             return s or None
         return v
+
+    # ▼ priority 정규화(문자/None 허용, 0~3 클램프)
+    @field_validator("priority", mode="before")
+    @classmethod
+    def _normalize_priority(cls, v: Any) -> Optional[int]:
+        if v is None or v == "":
+            return None
+        try:
+            i = int(v)
+        except Exception:
+            raise ValueError("priority는 0~3 정수여야 합니다.")
+        if i < PRIORITY_MIN:
+            i = PRIORITY_MIN
+        if i > PRIORITY_MAX:
+            i = PRIORITY_MAX
+        return i
 
 
 # ---------------------------
