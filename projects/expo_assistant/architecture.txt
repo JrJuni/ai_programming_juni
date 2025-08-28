@@ -1,0 +1,22 @@
+/expo-agent
+  /src
+    app.py                # Streamlit UI & 파이프라인 오케스트레이션
+    asr.py                # STT 래퍼(faster-whisper), 언어/신뢰도/세그먼트
+    vad.py                # VAD(webrtcvad 또는 silero-vad)
+    summarizer.py         # 오프라인(llama.cpp) & 온라인(OpenAI/Anthropic) 클라이언트
+    schema.py             # Pydantic 모델 + JSON Schema + 검증/자동보정
+    revision.py           # 음성 수정 지시 → JSON Patch 생성(규칙+소형 LLM)
+    db.py                 # SQLite DAO, 마이그레이션, 인덱스/쿼리
+    export_xlsx.py        # OpenPyXL 템플릿/스타일/컬럼맵
+    config.py             # config.yaml 로드/검증, 모드 토글
+    secrets_util.py       # key 관리(secrets.toml, keyring, 세션 보관)
+    logging_util.py       # 일자별 로깅 설정/회전
+  /configs/config.yaml
+  /templates/excel_template.xlsx
+  /models                 # gguf/whisper 모델 캐시(선택)
+  /logs/log_YYYYMMDD.txt
+  /tests                  # 단위/통합 테스트
+  architecture.txt        # 프로젝트 아키텍처 및 파일 구조 설명
+  requirements.txt
+  README.md
+  

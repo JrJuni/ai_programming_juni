@@ -1,0 +1,49 @@
+# 핵심 의존성
+pydantic>=2.7
+openpyxl>=3.1
+pyyaml>=6.0
+keyring>=24.0     # 옵션: API키 로컬 보관
+streamlit>=1.35   # UI 프레임 준비(차후)
+
+# 음성 처리
+faster-whisper>=0.10.0  # STT 엔진
+webrtcvad>=2.0.10       # VAD (Voice Activity Detection)
+silero-vad>=4.0.0       # 대안 VAD
+torch>=2.0.0            # PyTorch (silero-vad용)
+torchaudio>=2.0.0       # PyTorch Audio
+
+# LLM 및 AI
+openai>=1.0.0           # OpenAI API 클라이언트
+anthropic>=0.7.0        # Anthropic API 클라이언트
+llama-cpp-python>=0.2.0  # 로컬 LLM 실행
+transformers>=4.30.0    # Hugging Face 모델
+
+# 데이터베이스
+sqlite3                  # Python 내장 (별도 설치 불필요)
+alembic>=1.12.0         # 데이터베이스 마이그레이션
+
+# JSON 처리
+jsonpatch>=1.32         # JSON Patch 생성/적용
+jsonschema>=4.17.0      # JSON 스키마 검증
+
+# 로깅 및 유틸리티
+python-json-logger>=2.0.7  # JSON 형식 로깅
+loguru>=0.7.0              # 고급 로깅
+python-dotenv>=1.0.0       # 환경변수 관리
+
+# 파일 처리
+pathlib                  # Python 내장 (별도 설치 불필요)
+shutil                   # Python 내장 (별도 설치 불필요)
+
+# 개발 도구
+pytest>=7.4.0           # 테스트 프레임워크
+pytest-cov>=4.1.0       # 테스트 커버리지
+black>=23.0.0           # 코드 포맷터
+flake8>=6.0.0           # 코드 린터
+mypy>=1.5.0             # 타입 체커
+
+# 선택적 의존성
+toml>=0.10.2            # secrets.toml 파싱
+requests>=2.31.0        # HTTP 클라이언트
+numpy>=1.24.0           # 수치 계산
+pandas>=2.0.0           # 데이터 처리 (선택)
